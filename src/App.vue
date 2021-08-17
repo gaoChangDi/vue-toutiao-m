@@ -1,10 +1,16 @@
+// 《 根路由 》
+
 <template>
-  <div id="app">
-    123
-    <i class="iconfont icon-gengduo"></i>
+ <div id="app">
+    <!-- 路由的出口 login/layout-->
+    <router-view/>
   </div>
 </template>
 
-<style lang="less">
+<script>
+export default {
+  name: 'App'
+}
+</script>
 
-</style>
+<style lang="less"></style>

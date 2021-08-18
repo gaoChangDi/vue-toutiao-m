@@ -8,7 +8,6 @@
       <van-icon slot="left" name="cross" @click="$router.back()" />
     </van-nav-bar>
 
-
     <!-- 登录表单 -->
     <van-form @submit="onSubmit" ref="loginFormRef">
       <!-- 表单手机号项 -->
@@ -57,7 +56,6 @@
           >
         </template>
       </van-field>
-
 
       <!-- 登录按钮 -->
       <div style="margin: 16px">
@@ -120,7 +118,7 @@ export default {
       this.$toast.loading({
         message: "加载中...",
         forbidClick: true,
-        duration: 0,// 持续时间，默认2000      0表示持续展示不关闭
+        duration: 0, // 持续时间，默认2000      0表示持续展示不关闭
       });
 
       // 3. 提交表单请求登录
@@ -132,7 +130,7 @@ export default {
         this.$toast.success("登录成功");
         this.$store.commit("setUser", data);
         // back 的方式不严谨，后面讲功能优化的时候再说
-        this.$router.back();// 登录成功，跳转回原来页面
+        this.$router.back(); // 登录成功，跳转回原来页面
       } catch (err) {
         if (err.response.status === 400) {
           console.log("手机号或验证码错误");
@@ -189,13 +187,11 @@ export default {
 }
 
 .send-sms-btn {
-  width: 152px;
-  height: 46px;
+  width: 168px;
+  height: 48px;
   line-height: 46px;
   background-color: #ededed;
-  font-size: 22px;
   color: #666;
-  border: none;
 }
 
 .login-btn-wrap {

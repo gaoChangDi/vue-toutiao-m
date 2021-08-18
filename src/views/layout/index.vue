@@ -6,7 +6,7 @@
     <router-view></router-view>
 
 
-    <van-tabbar route>
+    <van-tabbar route :border="false">
       <van-tabbar-item to="/">
         <span>首页</span>
         <i slot="icon" class="iconfont icon-shouye"></i>

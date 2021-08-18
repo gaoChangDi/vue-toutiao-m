@@ -34,3 +34,20 @@ export const getUserInfo = () => {
         // }
     })
 }
+
+// 获取用户频道列表
+export const getUserList = () => {
+    return request({
+        method: 'GET',
+        url: '/app/v1_0/user/channels',
+    })
+}
+
+// 频道新闻推荐_V1.1
+export const getArticles = params => {
+    return request({
+        method: 'GET',
+        url: '/app/v1_1/articles',
+        params
+    })
+}

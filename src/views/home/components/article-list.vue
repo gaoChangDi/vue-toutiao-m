@@ -1,5 +1,7 @@
+// 频道列表子组件（爸）
 <template>
   <div class="article-list">
+    <!-- 1.下拉刷新 -->
     <!-- @refresh 下拉刷新时触发-->
     <!-- :success-text 刷新成功提示文案 -->
     <!-- :success-duration 刷新成功提示展示时长(ms) -->
@@ -9,9 +11,12 @@
       :success-text="refreshSuccessText"
       :success-duration="1500"
     >
+
+
+      <!-- 1.1初始化或上拉滚动 -->
+      <!-- @load  初始化或滚动到底部的时触发 -->
       <!-- :error.sync 是否加载失败，加载失败后点击错误提示可以重新
                        触发load事件，必须使用sync修饰符 -->
-      <!-- @load 滚动条与底部距离小于 offset 时触发 -->
       <van-list
         v-model="loading"
         :error.sync="error"
@@ -20,7 +25,14 @@
         finished-text="没有更多了"
         @load="onLoad"
       >
-        <article-item v-for="(article, index) in list" :key="index" :article="article" >
+
+
+       <!-- 1.1.1每个频道列表显示对应的文章列表 -->
+        <article-item
+          v-for="(article, index) in list"
+          :key="index"
+          :article="article"
+        >
         </article-item>
         <!-- <van-cell
           v-for="(item, index) in list"
@@ -33,8 +45,9 @@
 </template>
 
 <script>
-// 频道新闻推荐_V1.1接口模块
-import { getArticles } from "@/api/user";
+// 获取文章列表接口
+import { getArticles } from "@/api/article";
+// 每个频道列表显示对应的文章列表子组件
 import ArticleItem from "@/components/article-item";
 
 export default {
@@ -59,11 +72,9 @@ export default {
       refreshSuccessText: "刷新成功", // 下拉刷新成功提示文本
     };
   },
-
   mounted() {
     // console.log(this.list);
   },
-
   methods: {
     // 初始化或滚动到底部的时候会触发调用 onLoad（获取对应的文章列表数据渲染页面，依次滚动刷新追加到后面）
     async onLoad() {

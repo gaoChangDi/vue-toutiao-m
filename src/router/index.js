@@ -38,6 +38,11 @@ const routes = [{
                 import ('@/views/my')
         }
     ]
+}, {
+    path: '/search',
+    name: 'search',
+    component: () =>
+        import ('@/views/search') //导入login组件懒加载
 }]
 
 const router = new VueRouter({

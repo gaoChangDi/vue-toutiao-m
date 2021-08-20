@@ -3,6 +3,7 @@
   <div class="home-container">
     <!-- 1. 头部搜素 -->
     <van-nav-bar class="page-nav-bar" fixed>
+      <!-- to="/search" 跳转到/search路由模块-->
       <van-button
         slot="title"
         round
@@ -10,6 +11,7 @@
         size="small"
         icon="search"
         class="search-btn"
+        to="/search"
       >
         搜索
       </van-button>
@@ -74,7 +76,7 @@ export default {
     return {
       active: 0,
       channels: [], // 频道列表
-      isChennelEditShow: true, // 控制编辑频道弹出层的显示状态
+      isChennelEditShow: false, // 控制编辑频道弹出层的显示状态
     };
   },
   created() {

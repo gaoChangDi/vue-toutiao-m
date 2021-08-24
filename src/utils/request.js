@@ -1,13 +1,29 @@
 // 为每个请求添加自动添加请求路径前缀《请求工具》
 import axios from 'axios'
 import store from '@/store'
+import JSONBig from 'json-bigint'
+
+// const jsonStr = '{ "art_id": 1245953273786007552 }'
+// .parse  JSON字符串 转 对象
+// console.log(JSON.parse(jsonStr))
+// console.log(JSONBig.parse(jsonStr))
+// console.log(JSONBig.parse(jsonStr).art_id.toString())
+// .stringify 对象 转 JSON字符串
+// console.log(JSON.stringify(JSONBig.parse(jsonStr)))
+// console.log(JSONBig.stringify(JSONBig.parse(jsonStr)))
 
 // 接口的基准路径
 const request = axios.create({
     baseURL: "http://ttapi.research.itcast.cn",
-    // headers: {
-    //     'Content-Type': "application/json;charset=utf-8"
-    // }
+    transformResponse: [function(data) {
+        try {
+            return JSONBig.parse(data)
+        } catch (err) {
+            // return JSON.parse(data)
+            return data;
+        }
+    }],
+
 })
 
 // 请求拦截器

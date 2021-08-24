@@ -112,8 +112,7 @@ export default {
     // 提交表单
     async onSubmit() {
       // 1.拿到表单数据
-      const user = this.user;
-
+      console.log(this.user);
       // 2. 表单验证
       this.$toast.loading({
         message: "加载中...",
@@ -124,11 +123,11 @@ export default {
       // 3. 提交表单请求登录
       try {
         const {
-          data: { data },
-        } = await login(user);
+          data
+        } = await login(this.user);
         console.log("登录成功", data);
         this.$toast.success("登录成功");
-        this.$store.commit("setUser", data);
+        this.$store.commit("setUser", data.data);
         // back 的方式不严谨，后面讲功能优化的时候再说
         this.$router.back(); // 登录成功，跳转回原来页面
       } catch (err) {

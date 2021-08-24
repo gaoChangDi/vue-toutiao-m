@@ -42,3 +42,22 @@ export const getUserList = () => {
         url: '/app/v1_0/user/channels',
     })
 }
+
+// 关注用户
+export const addFollow = target => {
+    return request({
+        method: 'POST',
+        url: '/app/v1_0/user/followings',
+        data: {
+            target
+        }
+    })
+}
+
+// 取关用户
+export const delFollow = targetId => {
+    return request({
+        method: 'DELETE',
+        url: `/app/v1_0/user/followings/${targetId}`,
+    })
+}

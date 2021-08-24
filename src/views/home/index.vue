@@ -57,7 +57,7 @@
 <script>
 //获取频道列表接口
 import { getUserList } from "@/api/user";
-//文章列表数据vue子组件
+//频道列表数据vue子组件
 import ArticleList from "./components/article-list";
 //汉堡按钮频道编辑弹出层vue子组件
 import ChannelEdit from "./components/channel-edit";

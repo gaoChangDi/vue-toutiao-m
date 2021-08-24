@@ -1,7 +1,17 @@
 // 每个频道列表显示对应的文章列表（共享孙）
 <template>
   <div class="article-item">
-    <van-cell >
+    <!-- 传统字符串拼接  :to="'/article/' + article.art_id"-->
+    <!-- ES6字符串拼接 :to="`/article/${article.art_id}`"-->
+    <!-- 使用props解耦路由参数 -->
+    <van-cell
+      :to="{
+        name: 'article',
+        params: {
+          articleId: article.art_id,
+        },
+      }"
+    >
       <!-- 标题 -->
       <div slot="title" class="title van-multi-ellipsis--l2">
         {{ article.title }}
@@ -22,7 +32,7 @@
         <div class="label-info-wrap">
           <span>{{ article.aut_name }}</span>
           <span>{{ article.comm_count }}评论</span>
-          <span>{{ article.pubdate | relativeTime}}</span>
+          <span>{{ article.pubdate | relativeTime }}</span>
         </div>
       </div>
       <!-- 1张图片 -->

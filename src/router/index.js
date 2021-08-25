@@ -50,6 +50,12 @@ const routes = [{
         component: () =>
             import ('@/views/article'), //导入login组件懒加载
         props: true // 开启 Props 传参
+    },
+    {
+        path: '/user/profile',
+        name: 'user-profile',
+        component: () =>
+            import ('@/views/user-profile'), //导入login组件懒加载
     }
 ]
 
